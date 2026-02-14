@@ -102,27 +102,35 @@ anago d?? script_file dump_file mapper
   mapper<br />
        Overrides the mapper number in the output iNES ROM image. This is useful for mapper ASICs that are assigned multiple iNES mapper numbers such as MMC3/6.<br />
 
-### example1.1: Getting an image for UNROM
+#### example1.1: Getting an image for UNROM
 
+```
 ./anago d unrom.ad unrom.nes
+```
 
 anago get vram mirroring connection from target cartridge.
 
-### example1.2: Getting an image for UOROM
+#### example1.2: Getting an image for UOROM
 
+```
 ./anago d2 unrom.ad unrom.nes
+```
 
 UOROM data size is twice that of UNROM. This must be specicifed by hand.
 
-### example2: Getting an image for Metal Slader Glory / ELROM
+#### example2: Getting an image for Metal Slader Glory / ELROM
 
+```
 ./anago d22 mmc5.ad hal_4j.nes
+```
 
 In many cases, it is enough by 2M+2M to dump images for MMC5. MMC5 can manage 8M+8M. Please specify it individually according to capacity. 
 
-### example3: Getting an image for Ys III / TKSROM
+#### example3: Getting an image for Ys III / TKSROM
 
+```
 ./anago d mmc3.ad vfr_q8_12.nes 118
+```
 
 Enter digits on last commandline word to change mapper number for MMC3 variants. 
 
@@ -130,56 +138,64 @@ Enter digits on last commandline word to change mapper number for MMC3 variants.
 
 Write to Flash ROM chips on specially prepaired flash carts.
 
+```
 ./anago f?? script_file programming_file prg_chip chr_chip
 ./anago F?? script_file programming_file prg_chip chr_chip
 ./anago a?? script_file programming_file prg_chip chr_chip
+```
 
-  a??
-       Use DRIVER_DUMMY
+  a??<br />
+       Use DRIVER_DUMMY.<br />
 
-  f?? or F??
-       If given, the "??" portion controls the fill mode for the PRG and CHR Flash ROM chips respectively. If omitted, Fill Mode is assumed.
-       Use DRIVER_KAZZO
+  f?? or F??<br />
+       If given, the "??" portion controls the fill mode for the PRG and CHR Flash ROM chips respectively. If omitted, Fill Mode is assumed.<br />
+       Use DRIVER_KAZZO.<br />
 
-  'f'
-       Fill mode. The entire ROM chip is overwritten, duplicating the PRG or CHR ROM contents as many times as nessecary to fill the chip. This is the slowest option but may be needed under some curcumstances. If unsure, use this mode. In general, if your mapper has an unknonw power-on state or the top address lines of the ROM may float at runtime, always use this mode.
+  'f'<br />
+       Fill mode. The entire ROM chip is overwritten, duplicating the PRG or CHR ROM contents as many times as nessecary to fill the chip. This is the slowest option but may be needed under some curcumstances. If unsure, use this mode. In general, if your mapper has an unknonw power-on state or the top address lines of the ROM may float at runtime, always use this mode.<br />
 
-  't'
-       Only writes the ROM image once to the top-most portion of the chip. This mode is typically safe for CHR-ROM for any mapper, as the power-on state is immaterial with a proper initialization routine.
+  't'<br />
+       Only writes the ROM image once to the top-most portion of the chip. This mode is typically safe for CHR-ROM for any mapper, as the power-on state is immaterial with a proper initialization routine.<br />
 
-  'b'
-       Only writes the ROM image once to the bottom-most portion of the chip. Use with caution, most mapper's power-on states are incompatible with this mode.
+  'b'<br />
+       Only writes the ROM image once to the bottom-most portion of the chip. Use with caution, most mapper's power-on states are incompatible with this mode.<br />
 
-  'e'
-       Write nothing for this memory device. This is equivalent to specifiying a dummy device.
+  'e'<br />
+       Write nothing for this memory device. This is equivalent to specifiying a dummy device.<br />
 
-  F??
-       Validate written memory and abort if there is a discrepancey.
+  F??<br />
+       Validate written memory and abort if there is a discrepancey.<br />
 
-  script_file
-       Specifies .af file for target cartridge.
+  script_file<br />
+       Specifies .af file for target cartridge.<br />
 
-  programming_file
-       Specifies the input iNES image file.
+  programming_file<br />
+       Specifies the input iNES image file.<br />
 
-  prg_chip, chr_chip
-       Specifies the Flash ROM chip present for each memory type in the target flash cart. Supported devices are listed in "flashdevice.nut". "dummy" is a special device name that will transfer no data. Use this to avoid overwriting one of the memory chips.
+  prg_chip, chr_chip<br />
+       Specifies the Flash ROM chip present for each memory type in the target flash cart. Supported devices are listed in "flashdevice.nut". "dummy" is a special device name that will transfer no data. Use this to avoid overwriting one of the memory chips.<br />
 
-### example1.1: Tranfer 1M+1M image to mmc3 / TLROM.
+#### example1.1: Tranfer 1M+1M image to mmc3 / TLROM.
 
+```
 ./anago f mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
+```
 
 In this case the board is configured with 4M flash ROMs. The MMC3 can only map 2M of CHR-ROM, so the high address line is assumed to be tied (either high or low). Anago would transfer the PRG portion four times to fill the PRG chip, and the CHR portion two times to fill the CHR chip.
 
-### example1.2: Tranfer 1M+1M image to mmc3 / TLROM.
+#### example1.2: Tranfer 1M+1M image to mmc3 / TLROM.
 
+```
 ./anago ftt mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
+```
 
 In this example the PRG and CHR ROMs are only written once, this time to the top portion of each chip, in order to save time. The program code will need to be aware of this arrangement and only use the top-most bank numbers.
 
-### example1.3: Tranfer 1M+1M image to mmc3 / TLROM.
+#### example1.3: Tranfer 1M+1M image to mmc3 / TLROM.
 
+```
 ./anago fbt mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
+```
 
 In this example the PRG ROM is written to the bottom 1M of the PRG ROM chip and the CHR ROM is written to the top 1M of the CHR ROM chip. The origional author remarks that this often works with Konami and Namcot titles. 
 
@@ -187,20 +203,24 @@ Incidentally, mmc3 is not compatible with Namcot 109. The 109 board has hard-wir
 
 * Note that the second translator does not fully understand the meaning of the above paragraph.
 
-### example2: tranfer UNROM(1M) image to UOROM.
+#### example2: tranfer UNROM(1M) image to UOROM.
 
+```
 ./anago ft uorom.af unrom.nes AM29F040B
+```
 
 If charcter memory is RAM, charcter device can be skip. Again the program will need to only use the upper bank numbers.
 
-### example3: Transfferring only charcter ROM image to mmc1/ SLROM
+#### example3: Transfferring only charcter ROM image to mmc1/ SLROM
 
+```
 ./anago ftt mmc1_slrom.af skrom.nes dummy AM29F040B
 ./anago fet mmc1_slrom.af skrom.nes AM29F040B AM29F040B
+```
 
 Both commands result in the same behavior. Choose the one that suits your taste.
 
-## Notes
+### Notes
 
 * If the concepts of Top and Bottom transfer are not clear, and their impact and requirements on your software are not obvious, please use the full transfer mode at all times.
 
