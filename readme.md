@@ -84,10 +84,10 @@ Used to create iNES ROM images from carts.
 
 ##### d?? or D??
 
-       If given, the ?? portion determines the length of the ROM to dump in multiples of the mapper's configured
-       width for the program ROM portion and character ROM portion respectively. For example, UNROM boards use
-       128KB PRG ROMs while UOROM boards use 256KB ROMs. A dumper script is provided for UNROM. To dump a UOROM
-       board, use the UNROM script with the d2 option.
+       If given, the ?? portion determines the length of the ROM to dump in multiples of the mapper's
+       configured width for the program ROM portion and character ROM portion respectively. For example,
+       UNROM boards use 128KB PRG ROMs while UOROM boards use 256KB ROMs. A dumper script is provided
+       for UNROM. To dump a UOROM board, use the UNROM script with the d2 option.
        2 is applicable for unrom.ad, mmc3.ad and mmc5.ad
        4 is applicable for mmc5.ad
 
@@ -104,8 +104,8 @@ Used to create iNES ROM images from carts.
        Output file, typically ending in .nes.
 
 ##### mapper
-       Overrides the mapper number in the output iNES ROM image. This is useful for mapper ASICs that are
-       assigned multiple iNES mapper numbers such as MMC3/6.
+       Overrides the mapper number in the output iNES ROM image. This is useful for mapper ASICs that
+       are assigned multiple iNES mapper numbers such as MMC3/6.
 
 #### Example 1.1 : Getting an image for UNROM
 
@@ -153,23 +153,23 @@ Write to Flash ROM chips on specially prepaired flash carts.
        Use DRIVER_DUMMY.
 
 ##### f?? or F??
-       If given, the "??" portion controls the fill mode for the PRG and CHR Flash ROM chips respectively. If
-       omitted, Fill Mode is assumed.
+       If given, the "??" portion controls the fill mode for the PRG and CHR Flash ROM chips respectively.
+       If omitted, Fill Mode is assumed.
        Use DRIVER_KAZZO.
 
 ##### 'f'
-       Fill mode. The entire ROM chip is overwritten, duplicating the PRG or CHR ROM contents as many times as
-       nessecary to fill the chip. This is the slowest option but may be needed under some curcumstances. If
-       unsure, use this mode. In general, if your mapper has an unknonw power-on state or the top address lines
-       of the ROM may float at runtime, always use this mode.
+       Fill mode. The entire ROM chip is overwritten, duplicating the PRG or CHR ROM contents as many
+       times as nessecary to fill the chip. This is the slowest option but may be needed under some
+       curcumstances. If unsure, use this mode. In general, if your mapper has an unknonw power-on state
+       or the top address lines of the ROM may float at runtime, always use this mode.
 
 ##### 't'
        Only writes the ROM image once to the top-most portion of the chip. This mode is typically safe for
        CHR-ROM for any mapper, as the power-on state is immaterial with a proper initialization routine.
 
 ##### 'b'
-       Only writes the ROM image once to the bottom-most portion of the chip. Use with caution, most mapper's
-       power-on states are incompatible with this mode.
+       Only writes the ROM image once to the bottom-most portion of the chip. Use with caution, most
+       mapper's power-on states are incompatible with this mode.
 
 ##### 'e'
        Write nothing for this memory device. This is equivalent to specifiying a dummy device.
@@ -184,9 +184,9 @@ Write to Flash ROM chips on specially prepaired flash carts.
        Specifies the input iNES image file.
 
 ##### prg_chip, chr_chip
-       Specifies the Flash ROM chip present for each memory type in the target flash cart. Supported devices
-       are listed in "flashdevice.nut". "dummy" is a special device name that will transfer no data. Use this
-       to avoid overwriting one of the memory chips.
+       Specifies the Flash ROM chip present for each memory type in the target flash cart.
+       Supported devices are listed in "flashdevice.nut". "dummy" is a special device name that will
+       transfer no data. Use this to avoid overwriting one of the memory chips.
 
 #### Example 1.1 : Tranfer 1M+1M image to mmc3 / TLROM.
 
