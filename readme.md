@@ -67,11 +67,11 @@ For packaging formats other than .deb, edit the **CMakeLists** and add the packa
 Refer to include manual page or original readme files for more details.
 
 If the anago executable file is installed in the build directory, the file dumpcore.nut must be too :
+
     $ cd build
     $ cp ../scripts/dumpcore.nut .
 
---command line arguments--
-./anago mode script_file target_file [...]
+    $ ./anago mode script_file target_file [...]
 
 ## Dump Mode
 
