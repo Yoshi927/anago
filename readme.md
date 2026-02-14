@@ -105,7 +105,7 @@ anago d?? script_file dump_file mapper
 #### Example 1.1 : Getting an image for UNROM
 
 ```
-./anago d unrom.ad unrom.nes
+./anago d ../scripts/unrom.ad unrom.nes
 ```
 
 anago get vram mirroring connection from target cartridge.
@@ -113,7 +113,7 @@ anago get vram mirroring connection from target cartridge.
 #### Example 1.2 : Getting an image for UOROM
 
 ```
-./anago d2 unrom.ad unrom.nes
+./anago d2 ../scripts/unrom.ad unrom.nes
 ```
 
 UOROM data size is twice that of UNROM. This must be specicifed by hand.
@@ -121,7 +121,7 @@ UOROM data size is twice that of UNROM. This must be specicifed by hand.
 #### Example 2 : Getting an image for Metal Slader Glory / ELROM
 
 ```
-./anago d22 mmc5.ad hal_4j.nes
+./anago d22 ../scripts/mmc5.ad hal_4j.nes
 ```
 
 In many cases, it is enough by 2M+2M to dump images for MMC5. MMC5 can manage 8M+8M. Please specify it individually according to capacity. 
@@ -129,7 +129,7 @@ In many cases, it is enough by 2M+2M to dump images for MMC5. MMC5 can manage 8M
 #### Example 3 : Getting an image for Ys III / TKSROM
 
 ```
-./anago d mmc3.ad vfr_q8_12.nes 118
+./anago d ../scripts/mmc3.ad vfr_q8_12.nes 118
 ```
 
 Enter digits on last commandline word to change mapper number for MMC3 variants. 
@@ -178,7 +178,7 @@ Write to Flash ROM chips on specially prepaired flash carts.
 #### Example 1.1 : Tranfer 1M+1M image to mmc3 / TLROM.
 
 ```
-./anago f mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
+./anago f ../scripts/mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
 ```
 
 In this case the board is configured with 4M flash ROMs. The MMC3 can only map 2M of CHR-ROM, so the high address line is assumed to be tied (either high or low). Anago would transfer the PRG portion four times to fill the PRG chip, and the CHR portion two times to fill the CHR chip.
@@ -186,7 +186,7 @@ In this case the board is configured with 4M flash ROMs. The MMC3 can only map 2
 #### Example 1.2 : Tranfer 1M+1M image to mmc3 / TLROM.
 
 ```
-./anago ftt mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
+./anago ftt ../scripts/mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
 ```
 
 In this example the PRG and CHR ROMs are only written once, this time to the top portion of each chip, in order to save time. The program code will need to be aware of this arrangement and only use the top-most bank numbers.
@@ -194,7 +194,7 @@ In this example the PRG and CHR ROMs are only written once, this time to the top
 #### Example 1.3 : Tranfer 1M+1M image to mmc3 / TLROM.
 
 ```
-./anago fbt mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
+./anago fbt ../scripts/mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
 ```
 
 In this example the PRG ROM is written to the bottom 1M of the PRG ROM chip and the CHR ROM is written to the top 1M of the CHR ROM chip. The origional author remarks that this often works with Konami and Namcot titles. 
@@ -206,7 +206,7 @@ Incidentally, mmc3 is not compatible with Namcot 109. The 109 board has hard-wir
 #### Example 2 : tranfer UNROM(1M) image to UOROM.
 
 ```
-./anago ft uorom.af unrom.nes AM29F040B
+./anago ft ../scripts/uorom.af unrom.nes AM29F040B
 ```
 
 If charcter memory is RAM, charcter device can be skip. Again the program will need to only use the upper bank numbers.
@@ -214,8 +214,8 @@ If charcter memory is RAM, charcter device can be skip. Again the program will n
 #### Example 3 : Transfferring only charcter ROM image to mmc1/ SLROM
 
 ```
-./anago ftt mmc1_slrom.af skrom.nes dummy AM29F040B
-./anago fet mmc1_slrom.af skrom.nes AM29F040B AM29F040B
+./anago ftt ../scripts/mmc1_slrom.af skrom.nes dummy AM29F040B
+./anago fet ../scripts/mmc1_slrom.af skrom.nes AM29F040B AM29F040B
 ```
 
 Both commands result in the same behavior. Choose the one that suits your taste.
