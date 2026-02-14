@@ -78,27 +78,29 @@ Syntax :
 
 Used to create iNES ROM images from carts.
 
+```
 anago d?? script_file dump_file mapper
+```
 
-  d?? or D??
-       If given, the ?? portion determines the length of the ROM to dump in multiples of the mapper's configured width for the program ROM portion and character ROM portion respectively. For example, UNROM boards use 128KB PRG ROMs while UOROM boards use 256KB ROMs. A dumper script is provided for UNROM. To dump a UOROM board, use the UNROM script with the d2 option.
-       2 is applicable for unrom.ad, mmc3.ad and mmc5.ad
-       4 is applicable for mmc5.ad
+  d?? or D??<br />
+       If given, the ?? portion determines the length of the ROM to dump in multiples of the mapper's configured width for the program ROM portion and character ROM portion respectively. For example, UNROM boards use 128KB PRG ROMs while UOROM boards use 256KB ROMs. A dumper script is provided for UNROM. To dump a UOROM board, use the UNROM script with the d2 option.<br />
+       2 is applicable for unrom.ad, mmc3.ad and mmc5.ad<br />
+       4 is applicable for mmc5.ad<br />
 
-  d??
-       Dumpping progress display with ncurses.
+  d??<br />
+       Dumping progress display with ncurses.<br />
 
-  D??
-       Dumpping progress display is same as unagi.exe.
+  D??<br />
+       Dumping progress display is same as unagi.exe.<br />
 
-  script_file
-       Specifies .ad file for target cartridge.
+  script_file<br />
+       Specifies .ad file for target cartridge.<br />
 
-  dump_file
-       Output file, typically ending in .nes.
+  dump_file<br />
+       Output file, typically ending in .nes.<br />
 
-  mapper
-       Overrides the mapper number in the output iNES ROM image. This is useful for mapper ASICs that are assigned multiple iNES mapper numbers such as MMC3/6.
+  mapper<br />
+       Overrides the mapper number in the output iNES ROM image. This is useful for mapper ASICs that are assigned multiple iNES mapper numbers such as MMC3/6.<br />
 
 ### example1.1: Getting an image for UNROM
 
