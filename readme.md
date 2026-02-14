@@ -83,7 +83,7 @@ anago d?? script_file dump_file mapper
 ```
 
   d?? or D??<br />
-       \tIf given, the ?? portion determines the length of the ROM to dump in multiples of the mapper's configured width for the program ROM portion and character ROM portion respectively. For example, UNROM boards use 128KB PRG ROMs while UOROM boards use 256KB ROMs. A dumper script is provided for UNROM. To dump a UOROM board, use the UNROM script with the d2 option.<br />
+       If given, the ?? portion determines the length of the ROM to dump in multiples of the mapper's configured width for the program ROM portion and character ROM portion respectively. For example, UNROM boards use 128KB PRG ROMs while UOROM boards use 256KB ROMs. A dumper script is provided for UNROM. To dump a UOROM board, use the UNROM script with the d2 option.<br />
        2 is applicable for unrom.ad, mmc3.ad and mmc5.ad<br />
        4 is applicable for mmc5.ad<br />
 
@@ -102,7 +102,7 @@ anago d?? script_file dump_file mapper
   mapper<br />
        Overrides the mapper number in the output iNES ROM image. This is useful for mapper ASICs that are assigned multiple iNES mapper numbers such as MMC3/6.<br />
 
-#### example1.1: Getting an image for UNROM
+#### Example 1.1 : Getting an image for UNROM
 
 ```
 ./anago d unrom.ad unrom.nes
@@ -110,7 +110,7 @@ anago d?? script_file dump_file mapper
 
 anago get vram mirroring connection from target cartridge.
 
-#### example1.2: Getting an image for UOROM
+#### Example 1.2 : Getting an image for UOROM
 
 ```
 ./anago d2 unrom.ad unrom.nes
@@ -118,7 +118,7 @@ anago get vram mirroring connection from target cartridge.
 
 UOROM data size is twice that of UNROM. This must be specicifed by hand.
 
-#### example2: Getting an image for Metal Slader Glory / ELROM
+#### Example 2 : Getting an image for Metal Slader Glory / ELROM
 
 ```
 ./anago d22 mmc5.ad hal_4j.nes
@@ -126,7 +126,7 @@ UOROM data size is twice that of UNROM. This must be specicifed by hand.
 
 In many cases, it is enough by 2M+2M to dump images for MMC5. MMC5 can manage 8M+8M. Please specify it individually according to capacity. 
 
-#### example3: Getting an image for Ys III / TKSROM
+#### Example 3 : Getting an image for Ys III / TKSROM
 
 ```
 ./anago d mmc3.ad vfr_q8_12.nes 118
@@ -175,7 +175,7 @@ Write to Flash ROM chips on specially prepaired flash carts.
   prg_chip, chr_chip<br />
        Specifies the Flash ROM chip present for each memory type in the target flash cart. Supported devices are listed in "flashdevice.nut". "dummy" is a special device name that will transfer no data. Use this to avoid overwriting one of the memory chips.<br />
 
-#### example1.1: Tranfer 1M+1M image to mmc3 / TLROM.
+#### Example 1.1 : Tranfer 1M+1M image to mmc3 / TLROM.
 
 ```
 ./anago f mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
@@ -183,7 +183,7 @@ Write to Flash ROM chips on specially prepaired flash carts.
 
 In this case the board is configured with 4M flash ROMs. The MMC3 can only map 2M of CHR-ROM, so the high address line is assumed to be tied (either high or low). Anago would transfer the PRG portion four times to fill the PRG chip, and the CHR portion two times to fill the CHR chip.
 
-#### example1.2: Tranfer 1M+1M image to mmc3 / TLROM.
+#### Example 1.2 : Tranfer 1M+1M image to mmc3 / TLROM.
 
 ```
 ./anago ftt mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
@@ -191,7 +191,7 @@ In this case the board is configured with 4M flash ROMs. The MMC3 can only map 2
 
 In this example the PRG and CHR ROMs are only written once, this time to the top portion of each chip, in order to save time. The program code will need to be aware of this arrangement and only use the top-most bank numbers.
 
-#### example1.3: Tranfer 1M+1M image to mmc3 / TLROM.
+#### Example 1.3 : Tranfer 1M+1M image to mmc3 / TLROM.
 
 ```
 ./anago fbt mmc3.af tlrom_1M_1M.nes AM29F040B AM29F040B
@@ -203,7 +203,7 @@ Incidentally, mmc3 is not compatible with Namcot 109. The 109 board has hard-wir
 
 * Note that the second translator does not fully understand the meaning of the above paragraph.
 
-#### example2: tranfer UNROM(1M) image to UOROM.
+#### Example 2 : tranfer UNROM(1M) image to UOROM.
 
 ```
 ./anago ft uorom.af unrom.nes AM29F040B
@@ -211,7 +211,7 @@ Incidentally, mmc3 is not compatible with Namcot 109. The 109 board has hard-wir
 
 If charcter memory is RAM, charcter device can be skip. Again the program will need to only use the upper bank numbers.
 
-#### example3: Transfferring only charcter ROM image to mmc1/ SLROM
+#### Example 3 : Transfferring only charcter ROM image to mmc1/ SLROM
 
 ```
 ./anago ftt mmc1_slrom.af skrom.nes dummy AM29F040B
@@ -220,7 +220,7 @@ If charcter memory is RAM, charcter device can be skip. Again the program will n
 
 Both commands result in the same behavior. Choose the one that suits your taste.
 
-### Notes
+#### Notes
 
 * If the concepts of Top and Bottom transfer are not clear, and their impact and requirements on your software are not obvious, please use the full transfer mode at all times.
 
@@ -239,7 +239,7 @@ make[1]: *** [CMakeFiles/Makefile2:96 : CMakeFiles/anago.dir/all] Erreur 2
 make: *** [Makefile:171 : all] Erreur 2
 ```
 
-### Solution : This error can be solved by adding the -fcommon option for the ld linker before compilation :
+#### Solution : This error can be solved by adding the -fcommon option for the ld linker before compilation :
 
 In the root directory (anago-master/), run :
 
@@ -258,7 +258,7 @@ Could not find USB device "kazzo" with vid=0x16c0 pid=0x5dc; code: 1
 reader open error
 ```
 
-### Solution : This error indicates that the user doesn't have the permission for accessing to USB device.
+#### Solution : This error indicates that the user doesn't have the permission for accessing to USB device.
 
 The easiest way to solve this error is to run anago in root mode :
 
@@ -271,7 +271,7 @@ The easiest way to solve this error is to run anago in root mode :
 dump core script error
 ```
 
-### Solution : The file dumpcore.nut must be in the same directory than the anago executable.
+#### Solution : The file dumpcore.nut must be in the same directory than the anago executable.
 
 In the build directory (anago-master/build/), run :
 
