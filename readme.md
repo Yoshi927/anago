@@ -79,7 +79,7 @@ Syntax :
 Used to create iNES ROM images from carts.
 
 ```
-anago d?? script_file dump_file mapper
+./anago d?? script_file dump_file mapper
 ```
 
   d?? or D??<br />
