@@ -265,6 +265,10 @@ The easiest way to solve this error is to run anago in root mode :
     $ su
     $ ./anago d ../scripts/nrom.ad dumpfile.nes
 
+or :
+
+    $ sudo ./anago d ../scripts/nrom.ad dumpfile.nes
+
 ## Core error
 
 ```
