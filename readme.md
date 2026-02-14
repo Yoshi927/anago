@@ -82,25 +82,25 @@ Used to create iNES ROM images from carts.
 ./anago d?? script_file dump_file mapper
 ```
 
-#### d?? or D??<br />
-       If given, the ?? portion determines the length of the ROM to dump in multiples of the mapper's configured width for the program ROM portion and character ROM portion respectively. For example, UNROM boards use 128KB PRG ROMs while UOROM boards use 256KB ROMs. A dumper script is provided for UNROM. To dump a UOROM board, use the UNROM script with the d2 option.<br />
-       2 is applicable for unrom.ad, mmc3.ad and mmc5.ad<br />
-       4 is applicable for mmc5.ad<br />
+##### d?? or D??
+       If given, the ?? portion determines the length of the ROM to dump in multiples of the mapper's configured width for the program ROM portion and character ROM portion respectively. For example, UNROM boards use 128KB PRG ROMs while UOROM boards use 256KB ROMs. A dumper script is provided for UNROM. To dump a UOROM board, use the UNROM script with the d2 option.
+       2 is applicable for unrom.ad, mmc3.ad and mmc5.ad
+       4 is applicable for mmc5.ad
 
-#### d??<br />
-       Dumping progress display with ncurses.<br />
+##### d??
+       Dumping progress display with ncurses.
 
-#### D??<br />
-       Dumping progress display is same as unagi.exe.<br />
+##### D??
+       Dumping progress display is same as unagi.exe.
 
-#### script_file<br />
-       Specifies .ad file for target cartridge.<br />
+##### script_file
+       Specifies .ad file for target cartridge.
 
-#### dump_file<br />
-       Output file, typically ending in .nes.<br />
+##### dump_file
+       Output file, typically ending in .nes.
 
-#### mapper<br />
-       Overrides the mapper number in the output iNES ROM image. This is useful for mapper ASICs that are assigned multiple iNES mapper numbers such as MMC3/6.<br />
+##### mapper
+       Overrides the mapper number in the output iNES ROM image. This is useful for mapper ASICs that are assigned multiple iNES mapper numbers such as MMC3/6.
 
 #### Example 1.1 : Getting an image for UNROM
 
@@ -144,36 +144,36 @@ Write to Flash ROM chips on specially prepaired flash carts.
 ./anago a?? script_file programming_file prg_chip chr_chip
 ```
 
-#### a??<br />
-       Use DRIVER_DUMMY.<br />
+##### a??
+       Use DRIVER_DUMMY.
 
-#### f?? or F??<br />
-       If given, the "??" portion controls the fill mode for the PRG and CHR Flash ROM chips respectively. If omitted, Fill Mode is assumed.<br />
-       Use DRIVER_KAZZO.<br />
+##### f?? or F??
+       If given, the "??" portion controls the fill mode for the PRG and CHR Flash ROM chips respectively. If omitted, Fill Mode is assumed.
+       Use DRIVER_KAZZO.
 
-#### 'f'<br />
-       Fill mode. The entire ROM chip is overwritten, duplicating the PRG or CHR ROM contents as many times as nessecary to fill the chip. This is the slowest option but may be needed under some curcumstances. If unsure, use this mode. In general, if your mapper has an unknonw power-on state or the top address lines of the ROM may float at runtime, always use this mode.<br />
+##### 'f'
+       Fill mode. The entire ROM chip is overwritten, duplicating the PRG or CHR ROM contents as many times as nessecary to fill the chip. This is the slowest option but may be needed under some curcumstances. If unsure, use this mode. In general, if your mapper has an unknonw power-on state or the top address lines of the ROM may float at runtime, always use this mode.
 
-#### 't'<br />
-       Only writes the ROM image once to the top-most portion of the chip. This mode is typically safe for CHR-ROM for any mapper, as the power-on state is immaterial with a proper initialization routine.<br />
+##### 't'
+       Only writes the ROM image once to the top-most portion of the chip. This mode is typically safe for CHR-ROM for any mapper, as the power-on state is immaterial with a proper initialization routine.
 
-#### 'b'<br />
-       Only writes the ROM image once to the bottom-most portion of the chip. Use with caution, most mapper's power-on states are incompatible with this mode.<br />
+##### 'b'
+       Only writes the ROM image once to the bottom-most portion of the chip. Use with caution, most mapper's power-on states are incompatible with this mode.
 
-#### 'e'<br />
-       Write nothing for this memory device. This is equivalent to specifiying a dummy device.<br />
+##### 'e'
+       Write nothing for this memory device. This is equivalent to specifiying a dummy device.
 
-#### F??<br />
-       Validate written memory and abort if there is a discrepancey.<br />
+##### F??
+       Validate written memory and abort if there is a discrepancey.
 
-#### script_file<br />
-       Specifies .af file for target cartridge.<br />
+##### script_file
+       Specifies .af file for target cartridge.
 
-#### programming_file<br />
-       Specifies the input iNES image file.<br />
+##### programming_file
+       Specifies the input iNES image file.
 
-#### prg_chip, chr_chip<br />
-       Specifies the Flash ROM chip present for each memory type in the target flash cart. Supported devices are listed in "flashdevice.nut". "dummy" is a special device name that will transfer no data. Use this to avoid overwriting one of the memory chips.<br />
+##### prg_chip, chr_chip
+       Specifies the Flash ROM chip present for each memory type in the target flash cart. Supported devices are listed in "flashdevice.nut". "dummy" is a special device name that will transfer no data. Use this to avoid overwriting one of the memory chips.
 
 #### Example 1.1 : Tranfer 1M+1M image to mmc3 / TLROM.
 
