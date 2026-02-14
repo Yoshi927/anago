@@ -207,14 +207,14 @@ Both commands result in the same behavior. Choose the one that suits your taste.
 
 ## Linker error
 
---------------
+``
 /usr/bin/ld : CMakeFiles/anago.dir/reader_dummy.c.o:(.data.rel.ro.local+0x0) : définitions multiples de « DRIVER_DUMMY »; CMakeFiles/anago.dir/anago.c.o:(.rodata+0x60) : défini pour la première fois ici
 /usr/bin/ld : CMakeFiles/anago.dir/reader_kazzo.c.o:(.data.rel.ro.local+0x0) : définitions multiples de « DRIVER_KAZZO »; CMakeFiles/anago.dir/anago.c.o:(.rodata+0x0) : défini pour la première fois ici
 collect2: error: ld returned 1 exit status
 make[2]: *** [CMakeFiles/anago.dir/build.make:298 : anago] Erreur 1
 make[1]: *** [CMakeFiles/Makefile2:96 : CMakeFiles/anago.dir/all] Erreur 2
 make: *** [Makefile:171 : all] Erreur 2
---------------
+``
 
 ### Solution : This error can be solved by adding the -fcommon option for the ld linker before compilation :
 
@@ -230,10 +230,10 @@ In the root directory (anago-master/), run :
 
 ## USB permission error
 
-----------------------
+``
 Could not find USB device "kazzo" with vid=0x16c0 pid=0x5dc; code: 1
 reader open error
-----------------------
+``
 
 ### Solution : This error indicates that the user doesn't have the permission for accessing to USB device.
 
@@ -244,9 +244,9 @@ The easiest way to solve this error is to run anago in root mode :
 
 ## Core error
 
--
+``
 dump core script error
--
+``
 
 ### Solution : The file dumpcore.nut must be in the same directory than the anago executable.
 
