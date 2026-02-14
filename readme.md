@@ -68,6 +68,8 @@ Refer to include manual page or original readme files for more details.
 
 <ins>Important :</ins> The **dumpcore.nut** file must be in the same directory as **anago** executable file.
 
+The following assumes that the **anago** executable file is in the **build** directory (anago-master/build/).
+
 ```
 Syntax :
 
@@ -273,7 +275,7 @@ reader open error
 
 #### Solution : This error indicates that the user doesn't have the permission for accessing to USB device.
 
-The easiest way to solve this error is to run anago in root mode :
+The easiest way to solve this error is to run anago in **root** mode :
 
     $ su
     $ ./anago d ../scripts/nrom.ad dumpfile.nes
@@ -290,6 +292,6 @@ dump core script error
 
 #### Solution : The file dumpcore.nut must be in the same directory than the anago executable.
 
-In the build directory (anago-master/build/), run :
+In the **build** directory (anago-master/build/), run :
 
     $ cp ../scripts/dumpcore.nut .
