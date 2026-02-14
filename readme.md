@@ -66,7 +66,7 @@ For packaging formats other than .deb, edit the **CMakeLists** and add the packa
 
 Refer to include manual page or original readme files for more details.
 
-Important : The dumpcore.nut file must be in the same directory as anago executable file.
+Important : The **dumpcore.nut** file must be in the same directory as anago executable file.
 
 ```
 Syntax :
