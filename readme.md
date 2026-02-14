@@ -244,9 +244,9 @@ The easiest way to solve this error is to run anago in root mode :
 
 ## Core error
 
-------------
+-
 dump core script error
----------------
+-
 
 ### Solution : The file dumpcore.nut must be in the same directory than the anago executable.
 
